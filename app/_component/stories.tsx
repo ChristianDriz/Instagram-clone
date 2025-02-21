@@ -1,39 +1,24 @@
 import Image from "next/image";
-import { faker } from '@faker-js/faker';
-
-interface User {
-    fullname: string,
-    image: string
-}
-
-function createRandomUser(): User {
-    return {
-        fullname: faker.person.fullName(),
-        image: `https://randomuser.me/api/portraits/${faker.helpers.arrayElement(["men", "women"])}/${faker.number.int(99)}.jpg`,
-    }
-}
+import { createRandomStory } from "../helper/functions";
   
-const users:User[] = Array.from({length:20}, createRandomUser);
+const stories = Array.from({length:20}, createRandomStory);
 
 export default function Stories() {
 
     return (
-        <div className="py-3 flex gap-[7px]">
-            {users.slice(0, 8).map((user, idx ) => (
-                <div key={idx} className="w-[72px] h-[84px] px-[3px]">
-                    <div className="flex items-center justify-center w-[66px] h-[66px] box rounded-full">
-                        <div className="flex items-center justify-center w-[61px] h-[61px] rounded-full bg-white">
-                            <Image 
-                                src={user.image}
-                                alt='image' 
-                                width={56} 
-                                height={56} 
-                                className="rounded-full border"
-                            />
-                        </div>
+        <div className="py-2 flex space-x-2 w-full overflow-hidden mb-[19px] border">
+            {stories.map((story, idx ) => (
+                <div key={idx} className="flex flex-col items-center min-w-[72px] h-[84px]">
+                    <div className="flex items-center justify-center w-[66px] h-[66px] border border-white box rounded-full">
+                        <Image 
+                            src={story.user.profile}
+                            alt='image' 
+                            width={56} height={56} 
+                            className="rounded-full outline outline-white outline-[2px] "
+                        />
                     </div>
-                    <div className="mt-0.5 text-xs truncate ">
-                        {user.fullname}
+                    <div className="mt-0.5 w-full text-xs truncate text-center ">
+                        {story.user.username}
                     </div>
                 </div>   
             ))}

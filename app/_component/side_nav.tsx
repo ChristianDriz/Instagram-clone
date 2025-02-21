@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { NavIcons, Profile, Logo, More } from './constants'
+import { NavIcons, Profile, Logo, More } from './icons'
 import Image from 'next/image'
 
 export default function Sidenav () {
