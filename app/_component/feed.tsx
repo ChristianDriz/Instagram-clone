@@ -36,7 +36,7 @@ export default function Feed() {
                     <div className="max-h-[585px] max-w-[470px] bg-slate-200 rounded">
                         <Image src={post.posted_img} alt="" width={470} height={470} className="h-full w-full object-cover rounded"/>
                     </div>   
-                    <div className="max-xs:px-4 pb-4 border-b mb-5">
+                    <div className="max-xs:px-4 sm:pb-4 sm:border-b mb-5">
                         {/* Actions */}
                         <div className="flex justify-between my-1 py-3">
                             <div className="flex space-x-4">

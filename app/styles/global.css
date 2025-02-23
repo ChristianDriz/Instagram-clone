@@ -5,3 +5,38 @@
 .box {
     background: linear-gradient(to top right, yellow, #ff2d43, #d300c5);
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* .embla {
+    width: 100%;
+    --slide-height: 8px;
+    --slide-spacing: 0;
+    --slide-size: 72px;
+}
+   */
+.embla__viewport {
+    overflow: hidden;
+}
+  
+.embla__container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    touch-action: pan-y pinch-zoom;
+    /* margin-left: calc(var(--slide-spacing) * -1); */
+}
+  
+.embla__slide {
+    transform: translate3d(0, 0, 0);
+    min-width: 72px;
+    height: 84px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding-left: var(--slide-spacing); */
+}

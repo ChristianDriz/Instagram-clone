@@ -1,4 +1,4 @@
-import Stories from "../_component/stories"
+import Stories from "../_component/stories copy"
 import Feed from "../_component/feed"
 import Suggested from "../_component/suggested"
 import User_Profile from "../_component/user_profile"
@@ -7,8 +7,8 @@ export default function Home () {
 
     return (
         <div className="w-screen flex sm:justify-center ">
-            <div className="xl:ml-[244px] 2xl:ml-[335px] flex py-4 ">
-                <div className="w-[630px] ">
+            <div className="xl:ml-[244px] 2xl:ml-[335px] flex py-4 overflow-hidden">
+                <div className="w-[630px] overflow-hidden ">
                     <Stories />
                     <Feed />
                 </div>
