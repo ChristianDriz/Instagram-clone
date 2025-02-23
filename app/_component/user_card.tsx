@@ -13,7 +13,7 @@ interface UserCardProps {
 
 export default function UserCard({ username, fullname, profile, followed_By, link, mode }: UserCardProps) {
     return (
-        <div className="flex items-center justify-between py-2 px-4">
+        <div className="flex items-center justify-between py-1 px-4">
             <div className="flex items-center gap-3">
                 <Image src={profile} 
                     alt="" 
@@ -26,7 +26,7 @@ export default function UserCard({ username, fullname, profile, followed_By, lin
                 </div>
             </div>
             <div>
-                <Link href ={'/asdad'} className="text-xs text-[#0095f6] font-medium">{link} </Link>
+                <Link href ={'/'} className="text-xs text-[#0095f6] font-medium">{link} </Link>
             </div>
         </div>
     )

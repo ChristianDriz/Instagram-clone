@@ -8,7 +8,7 @@ export const NavIcons: Icon[] = [
     { 
         name: 'home',
         icon: '/icons/light home active.svg',
-        isActive: true
+        isActive: true,
     },
     { 
         name: 'search',

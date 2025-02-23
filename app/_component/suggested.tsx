@@ -6,7 +6,7 @@ const suggestions = Array.from({length:20}, createRandomSuggestion);
 
 export default function Suggested() {
     return (
-        <div className="mt-3 mb-2">
+        <div className="mt-4 mb-2">
             <div className="flex justify-between items-center py-1 px-4"> 
                 <span className="text-sm font-medium text-[#737373]">Suggested for you</span>
                 <Link href="" className="text-xs font-medium">See All</Link>

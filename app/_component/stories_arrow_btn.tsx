@@ -13,59 +13,59 @@ type UsePrevNextButtonsType = {
   
 export const usePrevNextButtons = (
     emblaApi: EmblaCarouselType | undefined
-  ): UsePrevNextButtonsType => {
+): UsePrevNextButtonsType => {
     const [prevBtnDisabled, setPrevBtnDisabled] = useState(true)
     const [nextBtnDisabled, setNextBtnDisabled] = useState(true)
   
     const onPrevButtonClick = useCallback(() => {
-      if (!emblaApi) return
-      emblaApi.scrollPrev()
+        if (!emblaApi) return
+        emblaApi.scrollPrev()
     }, [emblaApi])
   
     const onNextButtonClick = useCallback(() => {
-      if (!emblaApi) return
-      emblaApi.scrollNext()
+        if (!emblaApi) return
+        emblaApi.scrollNext()
     }, [emblaApi])
   
     const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
-      setPrevBtnDisabled(!emblaApi.canScrollPrev())
-      setNextBtnDisabled(!emblaApi.canScrollNext())
+        setPrevBtnDisabled(!emblaApi.canScrollPrev())
+        setNextBtnDisabled(!emblaApi.canScrollNext())
     }, [])
   
     useEffect(() => {
-      if (!emblaApi) return
-  
-      onSelect(emblaApi)
-      emblaApi.on('reInit', onSelect).on('select', onSelect)
+        if (!emblaApi) return
+    
+        onSelect(emblaApi)
+        emblaApi.on('reInit', onSelect).on('select', onSelect)
     }, [emblaApi, onSelect])
   
     return {
-      prevBtnDisabled,
-      nextBtnDisabled,
-      onPrevButtonClick,
-      onNextButtonClick
+        prevBtnDisabled,
+        nextBtnDisabled,
+        onPrevButtonClick,
+        onNextButtonClick
     }
-  }
+}
   
-  type PropType = ComponentPropsWithRef<'button'>
+type PropType = ComponentPropsWithRef<'button'>
   
-  export const PrevButton: React.FC<PropType> = (props) => {
+export const PrevButton: React.FC<PropType> = (props) => {
     const { children, ...restProps } = props
   
     return (
-        <button className="rounded-full shadow-lg absolute !top-6 left-3" type="button" {...restProps}>
-            <Image src={Chevron_btn} alt='right-btn' height={24} width={24} className=''/>
+        <button type="button" {...restProps}>
+            <Image src={Chevron_btn} alt='prev-btn' height={24} width={24} className=''/>
             {children}
         </button>
     )
-  }
+}
   
 export const NextButton: React.FC<PropType> = (props) => {
     const { children, ...restProps } = props
 
     return (
-        <button className="rounded-full shadow-lg absolute !top-6 right-3" type="button" {...restProps}>
-            <Image src={Chevron_btn} alt='right-btn' height={24} width={24} className='rotate-180'/>
+        <button type="button" {...restProps}>
+            <Image src={Chevron_btn} alt='next-btn' height={24} width={24} className='rotate-180'/>
             {children}
         </button>
     )
