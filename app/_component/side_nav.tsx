@@ -32,7 +32,7 @@ export default function Sidenav() {
         <div className="w-full  ">
           {NavIcons.map((item, idx) => (
             <Link
-              href={`/${item.name == 'home' ? '/' : item.name }`}
+              href={`/`}
               key={idx}
               className="flex gap-4 p-3 my-2 hover:bg-[#f2f2f2] rounded-lg"
             >
