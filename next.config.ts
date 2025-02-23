@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "", // Allows all domains
+        hostname: "*", // Allows all domains
+        
       },
     ],
     unoptimized: true, // (Optional) Disables automatic image optimization

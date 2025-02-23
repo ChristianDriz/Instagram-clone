@@ -29,7 +29,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     useEffect(() => {
         setStories(Array.from({ length: 20 }, createRandomStory));
     }, []);
-    
+
    
     // Function to update state when scrolling
     const onSelect = useCallback(() => {
