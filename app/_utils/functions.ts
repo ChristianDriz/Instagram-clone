@@ -1,67 +1,66 @@
 import { faker } from "@faker-js/faker";
 
 interface User {
-    firstname: string,
-    lastname: string,
-    username: string,
-    profile: string,
+    firstname: string;
+    lastname: string;
+    username: string;
+    profile: string;
 }
 
 interface Post {
     user: User;
-    posted_img: string;
+    posted_img: string[];
     date_posted: Date;
     likes: number;
     descriptions: string;
 }
 
 interface Story {
-    user: User,
-    story_img: string,
+    user: User;
+    story_img: string;
 }
 
 interface Suggestion {
-    user: User,
-    followed_by: User[],
+    user: User;
+    followed_by: User[];
 }
 
-
-export function createRandomUser(): User {
-
-    const firstname = faker.person.firstName();
-    const lastname = faker.person.lastName();
-    const username = faker.internet.username().toLowerCase();
-
-    return {
-        firstname,
-        lastname,
-        username,
+export function createRandomUser() {
+    return{
+        firstname: faker.person.firstName(),
+        lastname: faker.person.lastName(),
+        username: faker.internet.username().toLowerCase(),
         profile: `https://randomuser.me/api/portraits/${faker.helpers.arrayElement(["men", "women"])}/${faker.number.int(99)}.jpg`,
     }
 }
 
-export function createRandomPost(): Post {
-    return {
+export function createRandomPost(count: number): Post[] {
+    return Array.from({length: count}, () => ({
         user: createRandomUser(),
-        posted_img: `https://picsum.photos/800/600?random=${faker.number.int(1000)}`,
+        posted_img: Array.from(
+            { 
+                length: Math.random() < 0.1 ? 1 : faker.number.int({ min: 2, max: 6 }) // set to high chance to generate posted one image  
+            },
+            () => `https://picsum.photos/800/?random=${faker.number.int(1000)}` 
+        ),       
         date_posted: faker.date.recent(),
         likes: faker.number.int(1000),
         descriptions: faker.lorem.sentence(),
-    }
+    }));
 }
 
-export function createRandomStory(): Story {
-    return {
+export function createRandomStory(count: number): Story[] {
+    return Array.from({length: count}, () => ({
         user: createRandomUser(),
         story_img: `https://picsum.photos/800/600?random=${faker.number.int(1000)}`,
-    }
+    }));
 }
 
-export function createRandomSuggestion(): Suggestion {
-    return {
+export function createRandomSuggestion(count: number): Suggestion[] {
+    return Array.from({length: count}, () => ({
         user: createRandomUser(),
-        followed_by: Array.from({ length: faker.number.int({ min: 1, max: 99 }) }, () => createRandomUser()), // Random followers (1-5 users)
-    }
+        followed_by: Array.from({ length: faker.number.int({ min: 1, max: 99 }) }, () => createRandomUser()), // Random followers
+    }));
 }
 
 export function formatFollowers(followers: User[]): string   {

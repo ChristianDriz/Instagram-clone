@@ -1,7 +1,12 @@
-import EmblaCarousel from "./_component/stories";
-import Feed from "./_component/feed";
-import Suggested from "./_component/suggested";
-import User_Profile from "./_component/user_profile";
+"use client"
+
+import dynamic from 'next/dynamic'
+import EmblaCarousel from "./_features/home/stories";
+// import Feed from "./_features/home/feed";
+import Suggested from "./_features/home/suggested";
+import User_Profile from "./_features/home/user_profile";
+
+const Feed = dynamic(() => import('./_features/home/feed'), { ssr: false })
 
 export default function Home() {
     return (

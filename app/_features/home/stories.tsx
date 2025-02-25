@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useCallback, useEffect, useState } from 'react'
-import { createRandomStory } from "../helper/functions";
+import { createRandomStory } from "../../_utils/functions";
 import { EmblaOptionsType } from 'embla-carousel'
 
 import { PrevButton, NextButton } from './stories_arrow_btn'
@@ -25,11 +25,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     const [isAtStart, setIsAtStart] = useState(true); // Track if at start
     const [isAtEnd, setIsAtEnd] = useState(false); // Track if at end
     const [stories, setStories] = useState<Story[]>([]);
+    const [hydrated, setHydrated] = useState(false);
 
     useEffect(() => {
-        setStories(Array.from({ length: 20 }, createRandomStory));
+        setStories(createRandomStory(20));
+        setHydrated(true);
     }, []);
-
    
     // Function to update state when scrolling
     const onSelect = useCallback(() => {
@@ -49,6 +50,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         }
     }, [emblaApi, onSelect]);
 
+    if (!hydrated) return null;
+
     const handlePrevButtonClick = () => {
         if (emblaApi) {
             const currentIndex = emblaApi.selectedScrollSnap();
@@ -65,7 +68,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
             emblaApi.scrollTo(nextIndex);
         }
     };
-    
 
     return (
         <div className="relative" ref={emblaRef}>

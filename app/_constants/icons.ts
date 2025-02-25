@@ -39,6 +39,42 @@ export const NavIcons: Icon[] = [
         name: 'create',
         icon: '/icons/light create.svg',
         isActive: false
+    },
+    { 
+        name: 'profile',
+        icon: '/icons/user.svg',
+    }
+]
+
+export const Mobile_NavIcons: Icon[] = [
+    { 
+        name: 'home',
+        icon: '/icons/light home active.svg',
+        isActive: true,
+    },
+    { 
+        name: 'explore',
+        icon: '/icons/light explore.svg',
+        isActive: false
+    },
+    { 
+        name: 'reels',
+        icon: '/icons/light reels.svg',
+        isActive: false
+    },
+    { 
+        name: 'create',
+        icon: '/icons/light create.svg',
+        isActive: false
+    },
+    { 
+        name: 'messages',
+        icon: '/icons/light messages.svg',
+        isActive: false
+    },
+    { 
+        name: 'profile',
+        icon: '/icons/user.svg',
     }
 ]
 
@@ -50,13 +86,6 @@ export const Logo: Icon[] = [
     { 
         name: 'ig_mini',
         icon: '/icons/instagram mini.svg',
-    }
-]
-
-export const Profile: Icon[] = [
-    { 
-        name: 'user',
-        icon: '/icons/user.svg',
     }
 ]
 
