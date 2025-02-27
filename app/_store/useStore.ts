@@ -9,11 +9,11 @@ interface User {
 }
 
 interface UserState {
-    user: User;
+    user: User | null;
     generateUser: () => void;
 }
 
 export const useUserStore = create<UserState>((set) => ({
-    user: createRandomUser(), // Generate user when store initializes
-    generateUser: () => set({ user: createRandomUser() }), // Function to regenerate user
+    user: null, // Set initial state as null to prevent hydration issues
+    generateUser: () => set({ user: createRandomUser() }),
 }));

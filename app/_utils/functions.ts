@@ -39,12 +39,13 @@ export function createRandomPost(count: number): Post[] {
         user: createRandomUser(),
         posted_img: Array.from(
             { 
-                length: Math.random() < 0.1 ? 1 : faker.number.int({ min: 2, max: 6 }) // set to high chance to generate posted one image  
+                // length: Math.random() < 0.1 ? 1 : faker.number.int({ min: 2, max: 10 }) // set to high chance to generate posted one image  
+                length: faker.number.int({ min: 1, max: 10 })
             },
             () => `https://picsum.photos/800/?random=${faker.number.int(1000)}` 
         ),       
         date_posted: faker.date.recent(),
-        likes: faker.number.int(1000),
+        likes: faker.number.int({ min: 20, max: 10000 }),
         descriptions: faker.lorem.sentence(),
     }));
 }

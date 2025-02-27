@@ -1,19 +1,20 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import UserCard from "../../_component/user_card";
 import { useUserStore } from "@/app/_store/useStore";
 
 export default function User_Profile() {
-
-    const { user } = useUserStore();
-    const [hydrated, setHydrated] = useState(false);
     
-    useEffect(() => {
-        setHydrated(true);
-    }, []);
+    const { user, generateUser } = useUserStore();
 
-    if (!hydrated) return null;
+    useEffect(() => {
+        if (!user) {
+            generateUser(); // Ensure user is initialized on the client
+        }
+    }, [user, generateUser]);
+
+    if (!user) return null; // Prevent rendering before user is set
 
     return (
         <div>           
@@ -26,5 +27,5 @@ export default function User_Profile() {
                 mode={'profile'}
             />       
         </div>
-    )
+    );
 }

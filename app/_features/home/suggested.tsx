@@ -1,9 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import UserCard from "../../_component/user_card";
-import { createRandomSuggestion, formatFollowers } from "../../_utils/functions";
+import { formatFollowers } from "../../_utils/functions";
 
 interface User {
     firstname: string;
@@ -17,19 +16,11 @@ interface Suggestion {
     followed_by: User[]; 
 }
 
-export default function Suggested() {
+type Props = {
+    suggestions: Suggestion[];
+}
 
-    const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
-    const [hydrated, setHydrated] = useState(false);
-    
-    useEffect(() => {
-        setSuggestions(createRandomSuggestion(5));
-        setHydrated(true);
-    }, []);
-
-    if (!hydrated) return null;
-    
-    console.log(suggestions);
+export default function Suggested({ suggestions }: Props) {
 
     return (
         <div className="mt-4 mb-2">
@@ -37,7 +28,7 @@ export default function Suggested() {
                 <span className="text-sm font-medium text-[#737373]">Suggested for you</span>
                 <Link href="" className="text-xs font-medium">See All</Link>
             </div>
-            <div className="py-1 ml-1 mb-1">
+            <div className="flex flex-col gap-1 py-2 ml-1 mb-1 ">
             {suggestions.slice(0, 5).map((suggestion, idx) => (
                 <UserCard 
                     key={idx} 

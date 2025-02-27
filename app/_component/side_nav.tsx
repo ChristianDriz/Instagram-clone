@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { NavIcons, Logo, More } from "../_constants/icons";
 import Image from "next/image";
@@ -8,15 +8,15 @@ import { useUserStore } from "@/app/_store/useStore";
 
 export default function Sidenav() {
 
-    const { user } = useUserStore();
-    const [hydrated, setHydrated] = useState(false);
-    
-    useEffect(() => {
-        setHydrated(true);
-    }, []);
+    const { user, generateUser } = useUserStore();
 
-    if (!hydrated) return null;
-    
+    useEffect(() => {
+        if (!user) {
+            generateUser(); // Ensure user is initialized on the client
+        }
+    }, [user, generateUser]);
+
+    if (!user) return null; // Prevent rendering before user is set
 
     return (
         <div className="fixed border-r-[1px] w-[72px] xl:min-w-[244px] 2xl:min-w-[335px] h-dvh p-3 flex flex-col justify-between">

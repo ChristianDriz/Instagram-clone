@@ -1,4 +1,3 @@
-
 import Sidenav from "./_component/side_nav"
 import Mobile_Nav from "./_component/mobile_nav"
 import "./styles/global.css"
@@ -13,6 +12,7 @@ export default function RootLayout({
 }: {
     children: React.ReactNode
 }) {
+
     return (
         <html lang="en">
             <body>

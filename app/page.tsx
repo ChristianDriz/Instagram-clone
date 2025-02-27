@@ -1,24 +1,26 @@
-"use client"
 
-import dynamic from 'next/dynamic'
-import EmblaCarousel from "./_features/home/stories";
-// import Feed from "./_features/home/feed";
-import Suggested from "./_features/home/suggested";
-import User_Profile from "./_features/home/user_profile";
-
-const Feed = dynamic(() => import('./_features/home/feed'), { ssr: false })
+import Stories from "./_features/home/stories";
+import Feed from './_features/home/news_feed';
+import Suggested from './_features/home/suggested';
+import User_Profile from './_features/home/user_profile';
+import { createRandomPost, createRandomSuggestion, createRandomStory } from "./_utils/functions";
 
 export default function Home() {
+
+    const posts = createRandomPost(10);
+    const suggestions = createRandomSuggestion(5);
+    const stories = createRandomStory(30);
+
     return (
         <div className="w-full flex justify-center ">
             <div className="w-[630px] overflow-hidden ">
-                <EmblaCarousel />
-                <Feed />
+                <Stories stories={stories}/>
+                <Feed posts={posts} />
             </div>
             <div className="w-[383px] pl-16 mt-4 max-[1159px]:hidden ">
                 <User_Profile />
-                <Suggested />
+                <Suggested suggestions={suggestions}/>
             </div>
-        </div>
+        </div> 
     );
 }

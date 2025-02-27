@@ -124,6 +124,10 @@ export const Feed_Icons: Icon[] = [
     {
         name: 'emoji',
         icon: '/icons/emoji.svg',
+    },
+    {
+        name: 'liked',
+        icon: '/icons/liked.svg',
     }
 ]
 
