@@ -3,19 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mobile_NavIcons} from "../_constants/icons";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useUserStore } from "@/app/_store/useStore"
 
 export default function Mobile_Nav() {
 
-    const { user } = useUserStore();
-    const [hydrated, setHydrated] = useState(false);
-    
-    useEffect(() => {
-        setHydrated(true);
-    }, []);
+    const { user, generateUser } = useUserStore();
 
-    if (!hydrated) return null;
+    useEffect(() => {
+        if (!user) {
+            generateUser(); // Ensure user is initialized on the client
+        }
+    }, [user, generateUser]);
+
+    if (!user) return null; // Prevent rendering before user is set
 
     return (
         <div className="bg-white flex justify-evenly border">
