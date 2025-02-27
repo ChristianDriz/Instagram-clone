@@ -7,7 +7,7 @@ import { createRandomPost, createRandomSuggestion, createRandomStory } from "./_
 
 export default function Home() {
 
-    const posts = createRandomPost(10);
+    const posts = createRandomPost(100);
     const suggestions = createRandomSuggestion(5);
     const stories = createRandomStory(30);
 
