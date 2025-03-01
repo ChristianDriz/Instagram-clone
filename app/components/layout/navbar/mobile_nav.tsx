@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Mobile_NavIcons} from "../_constants/icons";
+import { Mobile_NavIcons} from "../../../constants/icons";
 import { useEffect } from "react";
-import { useUserStore } from "@/app/_store/useStore"
+import { useUserStore } from "@/app/store/useStore"
 
 export default function Mobile_Nav() {
 
@@ -21,7 +21,7 @@ export default function Mobile_Nav() {
     return (
         <div className="bg-white flex justify-evenly border">
             {Mobile_NavIcons.map((item, idx) => (
-                <Link href={'/'} key={idx} className='p-3'>
+                <Link href={`/${idx === 0 ? '' : item.name}`} key={idx} className='p-3'>
                     <Image 
                         src={idx === 5 ? user.profile : item.icon}
                         alt={item.name}

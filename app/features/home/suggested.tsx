@@ -1,8 +1,8 @@
 "use client"
 
 import Link from "next/link";
-import UserCard from "../../_component/user_card";
-import { formatFollowers } from "../../_utils/functions";
+import UserCard from "../../components/ui/user_card";
+import { formatFollowers } from "../../utils/functions";
 
 interface User {
     firstname: string;

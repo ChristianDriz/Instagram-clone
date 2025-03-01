@@ -1,7 +1,7 @@
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Swiper_Pagination from "@/app/_component/swiper_pagination";
-import SwiperArrowBtns from '@/app/_component/swiper_btns';
+import Swiper_Pagination from "@/app/components/ui/swiper_pagination";
+import { PrevBtn, NextBtn } from '@/app/components/ui/swiper_btns';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import FloatingHeart from './floating_heart';
@@ -63,7 +63,7 @@ export default function FeedImage({ images, onDoubleTap, showHeart } : Props) {
                 setCurrentIndex(swiper.activeIndex)
             }}        
             slidesPerView="auto"        
-            className="max-h-[585px] max-w-[470px] bg-slate-200 xs:rounded flex overflow-hidden relative"  
+            className="max-h-[585px] max-w-[470px] bg-slate-200 xs:rounded flex overflow-hidden relative "  
         >
             {images.map((img, idx) => (
                 <SwiperSlide key={idx} className="overflow-hidden min-h-[470px] min-w-full">
@@ -72,25 +72,22 @@ export default function FeedImage({ images, onDoubleTap, showHeart } : Props) {
                         alt="img" 
                         width={470} 
                         height={470} 
-                        className="h-full w-full object-cover xs:rounded"
+                        className="h-full w-full object-cover xs:rounded "
                     />  
                 </SwiperSlide>                  
             ))}   
             {showHeart && <FloatingHeart />}
             {/* Navigation & Pagination */}    
-            <div className='absolute top-[47%] w-full px-4'>
-                <SwiperArrowBtns 
-                    totalSlides={images.length} 
-                    isAtStart={isAtStart} 
-                    isAtEnd={isAtEnd} 
-                    prevRef={prevRef} 
-                    nextRef={nextRef}
-                /> 
+            <div className='absolute top-[47%] left-3'>
+                < PrevBtn isAtStart={isAtStart} prevRef={prevRef} />
+            </div>
+            <div className={`absolute top-[47%] right-3 ${images.length == 1 ? 'hidden' : ''}`}>
+                < NextBtn isAtEnd={isAtEnd} nextRef={nextRef}  />
             </div>
             <Swiper_Pagination 
                 totalSlides={images.length} 
                 currentIndex={currentIndex} 
-            />
+            />    
         </Swiper>  
     )
 }

@@ -17,7 +17,10 @@ interface Post {
 
 interface Story {
     user: User;
-    story_img: string;
+    user_story: {
+        user_story_id: string;
+        user_story_img: string;
+    }[];
 }
 
 interface Suggestion {
@@ -39,7 +42,7 @@ export function createRandomPost(count: number): Post[] {
         user: createRandomUser(),
         posted_img: Array.from(
             { 
-                // length: Math.random() < 0.1 ? 1 : faker.number.int({ min: 2, max: 10 }) // set to high chance to generate posted one image  
+                // length: Math.random() < 0.7 ? 1 : faker.number.int({ min: 2, max: 10 }) // set to high chance to generate posted one image  
                 length: faker.number.int({ min: 1, max: 10 })
             },
             () => `https://picsum.photos/800/?random=${faker.number.int(1000)}` 
@@ -53,7 +56,13 @@ export function createRandomPost(count: number): Post[] {
 export function createRandomStory(count: number): Story[] {
     return Array.from({length: count}, () => ({
         user: createRandomUser(),
-        story_img: `https://picsum.photos/800/600?random=${faker.number.int(1000)}`,
+        user_story: Array.from (
+            { length: faker.number.int({ min: 1, max: 10 })}, 
+            () => ({
+                user_story_id: faker.string.numeric(10), // Generate a unique ID
+                user_story_img: `https://picsum.photos/800/600?random=${faker.number.int(1000)}`,
+            })
+        )
     }));
 }
 

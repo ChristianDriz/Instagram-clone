@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { createRandomUser } from "../_utils/functions";
+import { createRandomUser } from "../utils/functions";
 
 interface User {
     firstname: string;
@@ -15,5 +15,8 @@ interface UserState {
 
 export const useUserStore = create<UserState>((set) => ({
     user: null, // Set initial state as null to prevent hydration issues
-    generateUser: () => set({ user: createRandomUser() }),
+    generateUser: () => {
+        const newUser = createRandomUser();
+        set({ user: newUser });
+    }
 }));

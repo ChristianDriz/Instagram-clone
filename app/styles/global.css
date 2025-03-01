@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.box {
+.has_story {
     background: linear-gradient(to top right, yellow, #ff2d43, #d300c5);
 }
 

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Feed_Icons } from '@/app/_constants/icons'
+import { Feed_Icons } from '@/app/constants/icons'
 
 type Props = {
     likes: number;

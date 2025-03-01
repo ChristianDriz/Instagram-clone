@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import UserCard from "../../_component/user_card";
-import { useUserStore } from "@/app/_store/useStore";
+import UserCard from "../../components/ui/user_card";
+import { useUserStore } from "@/app/store/useStore";
 
 export default function User_Profile() {
     

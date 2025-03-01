@@ -12,7 +12,7 @@ export default function Swiper_Pagination ({ totalSlides, currentIndex } : Props
                 {Array.from({ length: totalSlides }).map((_, index) => (
                 <span
                     key={index}
-                    className={`w-1.5 h-1.5 rounded-full shadow-xl bg-white ${currentIndex === index ? "opacity-100" : "opacity-25"}`}
+                    className={`w-1.5 h-1.5 rounded-full bg-white ${currentIndex === index ? "opacity-90" : "opacity-25"}`}
                 />
             ))}
             </div>

@@ -1,9 +1,10 @@
 "use client"
 
-import FeedHeader from "@/app/_component/news_feed/feed_header";
-import FeedImage from "@/app/_component/news_feed/feed_image";
-import FeedActions from "@/app/_component/news_feed/feed_action";
-import FeedFooter from "@/app/_component/news_feed/feed_footer";
+import FeedHeader from "@/app/features/home/news_feed/feed_header";
+import FeedImage from "@/app/features/home/news_feed/feed_image";
+import FeedActions from "@/app/features/home/news_feed/feed_action";
+import FeedFooter from "@/app/features/home/news_feed/feed_footer";
+import { timeAgo } from "../../utils/functions";
 import { useState } from "react";
 
 type User = {
@@ -96,8 +97,8 @@ export default function Feed({ posts }: Props) {
         <div className="flex justify-center ">
             <div className="max-w-[470px]">
                 {posts.map((post, idx) => (
-                    <div key={idx} className="grid ">
-                        <FeedHeader user={ post.user} date_posted={post.date_posted} />
+                    <div key={idx}>
+                        <FeedHeader user={ post.user} posted_date={timeAgo(post.date_posted)} />
                         <FeedImage 
                             images={post.posted_img} 
                             onDoubleTap={() => handleDoubleTap(idx)} 
