@@ -60,7 +60,7 @@ export function createRandomStory(count: number): Story[] {
             { length: faker.number.int({ min: 1, max: 10 })}, 
             () => ({
                 user_story_id: faker.string.numeric(10), // Generate a unique ID
-                user_story_img: `https://picsum.photos/800/600?random=${faker.number.int(1000)}`,
+                user_story_img: `https://picsum.photos/600/1200?random=${faker.number.int(1000)}`,
             })
         )
     }));
@@ -96,4 +96,5 @@ export function timeAgo(date: Date): string {
     if (diffMin > 0) return `${diffMin}m`; // If more than a minute, show minutes
     return `${diffSec}s`; // If less than a minute, show seconds
 }
+
 

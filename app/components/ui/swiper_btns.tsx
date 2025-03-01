@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { RefObject } from 'react';
 
-const Chevron_btn = './icons/chevron-btn.svg';
+const Chevron_btn = '/icons/chevron-btn.svg';
 
 type PrevProp = {
     isAtStart?: boolean;

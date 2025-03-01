@@ -14,7 +14,7 @@ export default function Footer() {
         'Locations',
         'Instagram Lite',
         'Threads',
-        'Contact Uploadin & Non-Users',
+        'Contact Uploading & Non-Users',
         'Meta Verified',
         'English',
         '© 2025 Instagram from Meta'

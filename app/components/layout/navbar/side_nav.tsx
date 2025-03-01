@@ -1,22 +1,22 @@
 "use client"
 
-import { useEffect } from "react";
 import Link from "next/link";
 import { NavIcons, Logo, More } from "../../../constants/icons";
 import Image from "next/image";
-import { useUserStore } from "@/app/store/useStore";
+import { useStoreUser } from "@/app/store/useDataStore";
+import { useEffect } from "react";
 
 export default function Sidenav() {
 
-    const { user, generateUser } = useUserStore();
+    const { user, generateUser } = useStoreUser();
 
     useEffect(() => {
-        if (user == null ) { //if user is null, generate the user
+        if (user === null ) { //if user is null, generate the user
             generateUser();
         }
     }, [user, generateUser]);
 
-    if (!user) return null; // if user is null, return null
+    if (!user) return null;
 
     return (
         <div className="fixed border-r-[1px] w-[72px] xl:min-w-[244px] 2xl:min-w-[335px] h-dvh p-3 flex flex-col justify-between">

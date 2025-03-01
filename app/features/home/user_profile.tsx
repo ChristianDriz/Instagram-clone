@@ -1,20 +1,18 @@
-"use client";
 
-import { useEffect } from "react";
 import UserCard from "../../components/ui/user_card";
-import { useUserStore } from "@/app/store/useStore";
 
-export default function User_Profile() {
-    
-    const { user, generateUser } = useUserStore();
+interface User {
+    firstname: string;
+    lastname: string;
+    username: string;
+    profile: string;
+}
 
-    useEffect(() => {
-        if (!user) {
-            generateUser(); // Ensure user is initialized on the client
-        }
-    }, [user, generateUser]);
+interface userProps {
+    user: User;
+}
 
-    if (!user) return null; // Prevent rendering before user is set
+export default function User_Profile({ user } : userProps) {
 
     return (
         <div>           

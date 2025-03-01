@@ -102,15 +102,15 @@ export default function Feed({ posts }: Props) {
                         <FeedImage 
                             images={post.posted_img} 
                             onDoubleTap={() => handleDoubleTap(idx)} 
-                            showHeart={postStates[idx].showHeart}
+                            showHeart={postStates[idx]?.showHeart || false}
                         />
                         <div className="max-xs:px-4 sm:pb-4 sm:border-b mb-5">
                             <FeedActions 
-                                liked={postStates[idx].liked} 
+                                liked={postStates[idx]?.liked || false}
                                 onLike={() => handleHeartLike(idx)} 
-                                animate={postStates[idx].animate} 
+                                animate={postStates[idx]?.animate || false}
                             />
-                            <FeedFooter likes={postStates[idx].likes} descriptions={post.descriptions} />
+                            <FeedFooter likes={postStates[idx]?.likes || 0} descriptions={post.descriptions} />
                         </div>
                     </div>
                 ))}          

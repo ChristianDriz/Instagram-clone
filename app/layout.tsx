@@ -7,12 +7,12 @@ export const metadata = {
     description: 'create by cj drix',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
-
+    
     return (
         <html lang="en">
             <body>

@@ -9,7 +9,7 @@ import FloatingHeart from './floating_heart';
 type Props = {
     images: string[];
     onDoubleTap: () => void;
-    showHeart: boolean;
+    showHeart?: boolean;
 };
 
 export default function FeedImage({ images, onDoubleTap, showHeart } : Props) {
